@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import Batton from "./Button";
 
 function BackButton() {
     const navigate = useNavigate();
 
     return (
-        <button onClick={(e) => {
-            e.preventDefault(); navigate(-1);}
-            } className="back">
-            &larr; Back
-        </button>
+        <Batton type="back" onClick={(e) => {
+                  e.preventDefault();
+                  navigate(-1)}}>&larr; Back</Batton>
     );
 }
 

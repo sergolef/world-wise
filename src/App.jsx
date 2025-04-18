@@ -10,6 +10,7 @@ import CityList from './components/CityList';
 import CountryList from './components/CountryList';
 import City from './components/City';
 import { CitiesProvider } from './context/CitiesContext';
+import Form from './components/Form';
 
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
             <Route path="cities/:id" element={<City />} />
             {/* <Route path="countries/:countryId" element={<p>Country Details</p>} /> */}
             <Route path="countries" element={<CountryList/>} />
-            <Route path="form" element={<p>Form</p>} />
+            <Route path="form" element={<Form/>} />
           </Route>
           <Route path="*" element={<PageNotFound/>} />
         </Routes>
