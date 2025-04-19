@@ -14,7 +14,9 @@ export default function Map() {
   const { cities } = useCities();
   const {isLoading: isLoadingPosition, position: geolocationPosition, getPosition } = useGeolocation();
 
-  
+  const mapLat = searchParams.get('lat');
+  const mapLng = searchParams.get('lng');
+  const [mapPosition, setMapPosition] = useState([40, 0]);
 
   useEffect(() => {
     if (mapLat && mapLng) {
@@ -32,19 +34,22 @@ export default function Map() {
   , [geolocationPosition]);
 
 
+
   useEffect(() => {
     if (geolocationPosition) {
       setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
       setSearchParams({lat: geolocationPosition.lat, lng: geolocationPosition.lng});
     }
-  }
+  }, [geolocationPosition]);
 
 
   return (
-    <div className={styles.mapContainer} onClick={() => {
+    <div className={styles.mapContainer}>
+      {!geolocationPosition && (
+        <Button type="position" onClick={getPosition} >{isLoadingPosition ? 'Loading...': 'Use your position'}</Button>
+      )}
+
       
-    }}>
-      <Button type="position" onClick={getPosition} >{isLoadingPosition ? 'Loading...': 'Use your position'}</Button>
         <MapContainer className={styles.map} 
           center={mapPosition} zoom={6} scrollWheelZoom={true}>
         <TileLayer
