@@ -9,6 +9,9 @@ import BackButton from "./BackButton";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import Message from "./Message";
 import Spinner from "./Spinner";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useCities } from "../context/CitiesContext";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -32,6 +35,8 @@ function Form() {
   const [emoji, setEmoji] = useState("");
   const emojiFlag = convertToEmoji(country);
   const [errorMessage, setErrorMessage] = useState("");
+  const {createCity, isLoading} = useCities();
+
 
   useEffect(() => {
     async function getCityData() {
@@ -66,6 +71,35 @@ function Form() {
     getCityData();
   }, [lat, lng]);
 
+  async function handleAddCity(e) {
+    e.preventDefault();
+
+    if(!cityName || !date) return;
+
+    const newCity = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: {
+        lat,
+        lng
+      }
+    };
+
+    console.log(newCity);
+
+    await createCity(newCity);
+    navigate("/app/cities");
+  }
+
+  if(!lat || !lng) {
+    return (
+      <Message message="Please select a position on the map" />
+    );
+  }
+
   if(isLoadingGeopos) {
     return (
       <Spinner />
@@ -79,7 +113,8 @@ function Form() {
   }
   
     return (
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+      <form className={`${styles.form} ${isLoading ? styles.loading : ""}`} 
+        onSubmit={handleAddCity}>
         <div className={styles.row}>
           <label htmlFor="cityName">City name</label>
           <input
@@ -92,11 +127,9 @@ function Form() {
   
         <div className={styles.row}>
           <label htmlFor="date">When did you go to {cityName}?</label>
-          <input
-            id="date"
-            onChange={(e) => setDate(e.target.value)}
-            value={date}
-          />
+          <DatePicker id="date" onChange={(date) => setDate(date)} 
+            selected={date} 
+            dateFormat="dd/MM/yyyy"/>
         </div>
   
         <div className={styles.row}>
