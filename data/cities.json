@@ -37,39 +37,27 @@
       "id": "98443197"
     },
     {
-      "id": "155a",
-      "cityName": "Tarifa",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2025-04-19T23:05:30.944Z",
-      "notes": "ffdgdf",
-      "position": {
-        "lat": "36.08462129606931",
-        "lng": "-5.6689453125"
-      }
-    },
-    {
-      "id": "2a47",
-      "cityName": "Baie des Anges",
+      "id": "3072",
+      "cityName": "Paris",
       "country": "France",
       "emoji": "🇫🇷",
-      "date": "2025-04-19T23:05:51.636Z",
-      "notes": "teret",
+      "date": "2025-04-20T00:54:17.503Z",
+      "notes": "gnfgng",
       "position": {
-        "lat": "43.628123412124616",
-        "lng": "7.229003906250001"
+        "lat": "48.841856228738244",
+        "lng": "2.340903282165528"
       }
     },
     {
-      "id": "f2e5",
-      "cityName": "Monaco",
-      "country": "Monaco",
-      "emoji": "🇲🇨",
-      "date": "2025-04-19T23:06:07.641Z",
-      "notes": "jas",
+      "id": "72b4",
+      "cityName": "Moncton",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2025-04-20T00:56:46.150Z",
+      "notes": "mk",
       "position": {
-        "lat": "43.730979870471614",
-        "lng": "7.421007156372071"
+        "lat": "46.10821654150686",
+        "lng": "-64.84982728958131"
       }
     }
   ]
